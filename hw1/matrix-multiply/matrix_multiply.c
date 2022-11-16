@@ -34,6 +34,15 @@
 
 #include "./tbassert.h"
 
+// initialize a matrix to 0
+void initialize_matrix(matrix* m) {
+  for (int i = 0; i < m->rows; i++) {
+    for(int j = 0; j < m->cols; j++) {
+      m->values[i][j] = 0;
+    }
+  }
+}
+
 // Allocates a row-by-cols matrix and returns it
 matrix* make_matrix(int rows, int cols) {
   matrix* new_matrix = malloc(sizeof(matrix));
@@ -47,7 +56,7 @@ matrix* make_matrix(int rows, int cols) {
   for (int i = 0; i < rows; i++) {
     new_matrix->values[i] = (int*)malloc(sizeof(int) * cols);
   }
-
+  initialize_matrix(new_matrix);
   return new_matrix;
 }
 
